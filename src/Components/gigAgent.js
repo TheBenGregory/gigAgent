@@ -10,7 +10,7 @@ export const GigAgent = () => (
   <>
     <Route
       render={() => {
-        if (localStorage.getItem("users")) {
+        if (localStorage.getItem("agent_user")) {
           return (
             <>
               <NavBar />
