@@ -5,6 +5,7 @@ import { GigAgent } from './Components/gigAgent.js';
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
