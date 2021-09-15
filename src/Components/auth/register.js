@@ -28,7 +28,7 @@ export const Register = (props) => {
                         .then(res => res.json())
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
-                                localStorage.setItem("users", createdUser.id)
+                                localStorage.setItem("agent_user", createdUser.id)
                                 history.push("/")
                             }
                         })
@@ -40,11 +40,12 @@ export const Register = (props) => {
     }
 
     const updateUser = (evt) => {
-        const copy = {...existingUserCheck}
+        const copy = { ...user }
         copy[evt.target.id] = evt.target.value
         setUser(copy)
     }
-
+ 
+  
 
     return (
         <main style={{ textAlign: "center" }}>
@@ -58,16 +59,26 @@ export const Register = (props) => {
                 <fieldset>
                     <label htmlFor="name"> Full Name </label>
                     <input onChange={updateUser}
-                           type="text" id="name" className="form-control"
-                           placeholder="Enter your name" required autoFocus />
+                        type="text" id="name" className="form-control"
+                        placeholder="Enter your name" required autoFocus />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="address"> Address </label>
-                    <input onChange={updateUser} type="text" id="address" className="form-control" placeholder="Street address" required />
+                    <label htmlFor="brokerage"> Brokerage </label>
+                    <input onChange={updateUser} type="text" id="brokerage" className="form-control" placeholder="Brokerage" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="location"> County </label>
+                    <input onChange={updateUser} type="text" id="location" className="form-control" placeholder="County" required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="email"> Email address </label>
                     <input onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="isProvider"> Provider? </label>
+                    <input  onChange={updateUser} type="checkbox" id="isProvider" className="form-control" function toggle {(value) {return !value}}
+                    />
+                    
                 </fieldset>
                 <fieldset>
                     <button type="submit"> Register </button>
