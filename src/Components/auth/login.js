@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
 import "./login.css"
+import { HomePage } from "../HomePage/Homepage";
 
 export const Login = () => {
     const [email, set] = useState("")
@@ -14,12 +15,15 @@ export const Login = () => {
             .then(user => user.length ? user[0] : false)
     }
 
+    
+
     const handleLogin = (e) => {
+        
         e.preventDefault()
         existingUserCheck()
             .then(exists => {
                 if (exists) {
-                    localStorage.setItem("agent_users", exists.id)
+                    localStorage.setItem("agent_user", exists.id)
                     history.push("/")
                 } else {
                     existDialog.current.showModal()
@@ -33,7 +37,7 @@ export const Login = () => {
                 <div>User does not exist</div>
                 <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
             </dialog>
-
+    
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1>Welcome to gigAgent</h1>

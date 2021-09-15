@@ -1,0 +1,13 @@
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    background-color: rgb(49, 132, 206);
+    padding: 2%;
+
+}
+
+.navbar__item {
+    flex-basis: 20%;
+    list-style-type: none;
+}
