@@ -42,10 +42,16 @@ export const Register = (props) => {
     const updateUser = (evt) => {
         const copy = { ...user }
         copy[evt.target.id] = evt.target.value
+            copy.isProvider = !copy.isProvider
+       
         setUser(copy)
     }
- 
-  
+
+    const handleCheckbox = () => {
+        const copy = { ...user }
+        copy.isProvider = !copy.isProvider
+        setUser(copy)
+    }
 
     return (
         <main style={{ textAlign: "center" }}>
@@ -76,9 +82,7 @@ export const Register = (props) => {
                 </fieldset>
                 <fieldset>
                     <label htmlFor="isProvider"> Provider? </label>
-                    <input  onChange={updateUser} type="checkbox" id="isProvider" className="form-control" function toggle {(value) {return !value}}
-                    />
-                    
+                    <input onChange={(evt) => { handleCheckbox(evt) }} type="checkbox" id="isProvider" checked={user.isProvider} className="form-control" />
                 </fieldset>
                 <fieldset>
                     <button type="submit"> Register </button>
