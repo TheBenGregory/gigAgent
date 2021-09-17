@@ -13,7 +13,15 @@ export const NavBar = (props) => {
                 <Link className="navbar__link" to="/about">About</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/providers">Request a Showing</Link>
+                 if (users.isProvider === false) 
+                return
+                <Link className="navbar__link" to="/providers">Request a Showing</Link>)
+                     else (
+                        return (<Link className="navbar__link" to="/TicketList">My Jobs</Link>)) 
+                    
+            </li>
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/userprofile">Profile</Link>
             </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="#"

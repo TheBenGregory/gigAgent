@@ -4,7 +4,7 @@ import { HomePage } from "./HomePage/Homepage";
 import { About } from "./About/about.js"
 import { TicketForm } from "./Tickets/Ticketform";
 import { Providers } from "./Providers/providers";
-
+import { Profile } from "./UserProfile/userprofile";
 
 
 export const ApplicationViews = () => {
@@ -21,6 +21,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route path="/providers">
                 <Providers />
+            </Route>  
+            <Route exact path="/userprofile">
+                <Profile />
             </Route>            
          
         </>
