@@ -1,9 +1,12 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "./NavBar.css";
-
+import { getUsers } from "../apiManager/apiManager.js"
+import { getCurrentUser } from "../apiManager/apiManager.js";
 
 export const NavBar = (props) => {
+    const users = getUsers()
+    const currentUsers = getCurrentUser()
     return (
         <ul className="navbar">
             <li className="navbar__item active">
@@ -12,13 +15,17 @@ export const NavBar = (props) => {
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/about">About</Link>
             </li>
-            <li className="navbar__item active">
-
-                <Link className="navbar__link" to="/providers">Request a Showing</Link>
-                <li className="navbar__item active">
-                    <Link className="navbar__link" to="/TicketList">My Jobs</Link>
-                </li>
-            </li>
+            { 
+            currentUsers?.isProvider === "true" ?
+                <>
+                    <li className="navbar__item active">
+                        <Link className="navbar__link" to="/TicketList">My Jobs</Link></li></>
+                        :
+                        <>
+                    <li className="navbar__item active">
+                        <Link className="navbar__link" to="/providers">Request a Showing</Link></li></>
+                }
+                        
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/userprofile">Profile</Link>
             </li>

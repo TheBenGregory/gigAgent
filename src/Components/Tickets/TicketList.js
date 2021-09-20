@@ -29,7 +29,7 @@ export const TicketList = () => {
                     <h2>My Pending Jobs</h2>
                     {
                          allTickets.map((ticket) => {
-                            return <div key={ `profile--${ticket.id}` }>  { ticket.clientName } </div>
+                            return <div key={ `profile--${ticket.id}` }> Job Requested at { ticket.address } on { ticket.date } with { ticket.clientName } at { ticket.time }</div>
                     }
                     )
                 }

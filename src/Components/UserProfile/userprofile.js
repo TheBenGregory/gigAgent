@@ -39,7 +39,11 @@ return(
     
     {
         isLoggedIn.map((profileObject) => {
-                return <div key={ `profile--${profileObject.id}` }>  { profileObject.name } 
+                return <div key={ `profile--${profileObject.id}` }>  Welcome { profileObject.name }! 
+                <li>Brokerage: {profileObject.brokerage}</li> 
+                <li>Location: {profileObject.location} County</li> 
+                <li>Email: {profileObject.email}</li> 
+                <li>gigAgent? { profileObject.isProvider?"Yes":"No"}</li> 
                  <button onClick={() => {
                                 deleteUser(isLoggedIn.id)
                             }}>Delete my Account</button></div>
