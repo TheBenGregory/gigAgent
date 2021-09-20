@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
 export const Providers = () => {
     const [allAgents, assignAllAgents] = useState([])
@@ -38,9 +39,12 @@ export const Providers = () => {
                 
                 {
                     isProviders.map((providerObject) => {
-                            return <div key={ `provider--${providerObject.id}` }> 🔹 { providerObject.name }
+                        return (
+                             
+                           <Link className="gig_link" to="/TicketForm"> <div key={ `provider--${providerObject.id}` }>  { providerObject.name }</div> </Link>
+                        )
                             
-                            </div>
+                            
                         }
                     
                         )
