@@ -5,6 +5,7 @@ import { About } from "./About/about.js"
 import { TicketForm } from "./Tickets/Ticketform";
 import { Providers } from "./Providers/providers";
 import { Profile } from "./UserProfile/userprofile";
+import { TicketList } from "./Tickets/TicketList";
 
 
 export const ApplicationViews = () => {
@@ -24,7 +25,10 @@ export const ApplicationViews = () => {
             </Route>  
             <Route exact path="/userprofile">
                 <Profile />
-            </Route>            
+            </Route>          
+            <Route exact path="/TicketList">
+                <TicketList />
+            </Route>    
          
         </>
     )

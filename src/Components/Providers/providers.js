@@ -17,7 +17,7 @@ export const Providers = () => {
         },
         []
     )
-
+   
     
     
     useEffect(
@@ -38,12 +38,12 @@ export const Providers = () => {
                 
                 {
                     isProviders.map((providerObject) => {
-                            return <div key={ `provider--${providerObject.id}` }> 🔹 { providerObject.name } </div>
+                            return <div key={ `provider--${providerObject.id}` }> 🔹 { providerObject.name }
                             
+                            </div>
                         }
-                        
+                    
                         )
-                        
                     }
                     
             </article>

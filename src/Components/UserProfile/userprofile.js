@@ -17,7 +17,11 @@ export const Profile = () => {
         []
     )
 
-    
+    const deleteUser = (id) => {
+        fetch(`http://localhost:8088/users/${id}`, {
+            method: "DELETE"
+        })
+    } 
     
     useEffect(
         () => { 
@@ -25,7 +29,7 @@ export const Profile = () => {
         setProfile(onlyProfile)
     }, [allUsers])
 
-console.log(isLoggedIn, allUsers)
+
 
 return(
     <>
@@ -35,7 +39,10 @@ return(
     
     {
         isLoggedIn.map((profileObject) => {
-                return <div key={ `profile--${profileObject.id}` }>  { profileObject.name } </div>
+                return <div key={ `profile--${profileObject.id}` }>  { profileObject.name } 
+                 <button onClick={() => {
+                                deleteUser(isLoggedIn.id)
+                            }}>Delete my Account</button></div>
                 
             }
             

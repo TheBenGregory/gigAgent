@@ -13,12 +13,11 @@ export const NavBar = (props) => {
                 <Link className="navbar__link" to="/about">About</Link>
             </li>
             <li className="navbar__item active">
-                 if (users.isProvider === false) 
-                return
-                <Link className="navbar__link" to="/providers">Request a Showing</Link>)
-                     else (
-                        return (<Link className="navbar__link" to="/TicketList">My Jobs</Link>)) 
-                    
+
+                <Link className="navbar__link" to="/providers">Request a Showing</Link>
+                <li className="navbar__item active">
+                    <Link className="navbar__link" to="/TicketList">My Jobs</Link>
+                </li>
             </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/userprofile">Profile</Link>
@@ -26,7 +25,7 @@ export const NavBar = (props) => {
             <li className="navbar__item active">
                 <Link className="navbar__link" to="#"
                     onClick={
-                        () => {localStorage.removeItem("agent_user")}
+                        () => { localStorage.removeItem("agent_user") }
                     }>Logout</Link>
             </li>
         </ul>
