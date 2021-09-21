@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
+import "./userprofile.css";
 
 export const Profile = () => {
     const [allUsers, setAllUsers] = useState([])
@@ -34,19 +35,19 @@ export const Profile = () => {
 return(
     <>
 
-<article className="profile">
+<article className="user__profile">
     <h2>User Profile</h2>
     
     {
         isLoggedIn.map((profileObject) => {
-                return <div key={ `profile--${profileObject.id}` }>  Welcome { profileObject.name }! 
-                <li>Brokerage: {profileObject.brokerage}</li> 
-                <li>Location: {profileObject.location} County</li> 
-                <li>Email: {profileObject.email}</li> 
-                <li>gigAgent? { profileObject.isProvider?"Yes":"No"}</li> 
-                 <button onClick={() => {
+                return <div className="user__card"><div key={ `profile--${profileObject.id}` }>  Welcome { profileObject.name }! 
+                <li className="user__list">Brokerage: {profileObject.brokerage}</li> 
+                <li className="user__list">Location: {profileObject.location} County</li> 
+                <li className="user__list">Email: {profileObject.email}</li> 
+                <li className="user__list">gigAgent? { profileObject.isProvider?"Yes":"No"}</li> 
+                 <button className="delete__button" onClick={() => {
                                 deleteUser(isLoggedIn.id)
-                            }}>Delete my Account</button></div>
+                            }}>Delete my Account</button></div></div>
                 
             }
             
