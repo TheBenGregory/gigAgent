@@ -1,20 +1,49 @@
 import React, { useState } from "react"
+import { useHistory } from "react-router";
 
 
 
 export const TicketForm = () => {
-    const [ticket, update] = useState();
+    const [ticket, updateTicket] = useState({
+        isComplete: false}
+    );
+    
+    const history = useHistory()
 
-    const saveTicket = (event) => {
-        event.preventDefault()
+    const submitTicket = () => {
+        const newTicket = {
+            clientName: "",
+            consumerId: parseInt(localStorage.getItem("agent_user")),
+            userId: 1,
+            date: "",
+            phoneNumber: "",
+            time: "",
+            address: "",
+            isComplete: ticket.isComplete
+        }
+    
+
+
+        const fetchOption = {
+            method: "POST",
+            headers: {
+                    "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newTicket)
+        }
+        return fetch("http://localhost:8088/reqJobs", fetchOption) 
+        .then(() => {
+            history.push("/providers")
+        })
     }
 
     return (
+<>
         <form className="ticketForm">
             <h2 className="ticketForm__title">Request a Showing</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="description">Client Name:</label>
+                    <label htmlFor="clientName">Client Name:</label>
                     <input
                         required autoFocus
                         type="text"
@@ -23,14 +52,15 @@ export const TicketForm = () => {
                         onChange={
                             (evt) => {
                                 const copy = {...ticket}
-                                copy.description = evt.target.value
+                                copy.clientName = evt.target.value
+                                updateTicket(copy)
                             }
                         } />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="description">Client Phone:</label>
+                    <label htmlFor="phoneNumber">Client Phone:</label>
                     <input
                         required autoFocus
                         type="text"
@@ -39,14 +69,15 @@ export const TicketForm = () => {
                         onChange={
                             (evt) => {
                                 const copy = {...ticket}
-                                copy.description = evt.target.value
+                                copy.phoneNumber = evt.target.value
+                                updateTicket(copy)
                             }
                         } />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="description">Showing Address:</label>
+                    <label htmlFor="address">Showing Address:</label>
                     <input
                         required autoFocus
                         type="text"
@@ -55,14 +86,15 @@ export const TicketForm = () => {
                         onChange={
                             (evt) => {
                                 const copy = {...ticket}
-                                copy.description = evt.target.value
+                                copy.address = evt.target.value
+                                updateTicket(copy)
                             }
                         } />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="description">Date:</label>
+                    <label htmlFor="date">Date:</label>
                     <input
                         required autoFocus
                         type="date"
@@ -71,14 +103,15 @@ export const TicketForm = () => {
                         onChange={
                             (evt) => {
                                 const copy = {...ticket}
-                                copy.description = evt.target.value
+                                copy.date = evt.target.value
+                                updateTicket(copy)
                             }
                         } />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="description">Time:</label>
+                    <label htmlFor="time">Time:</label>
                     <input
                         required autoFocus
                         type="time"
@@ -87,27 +120,18 @@ export const TicketForm = () => {
                         onChange={
                             (evt) => {
                                 const copy = {...ticket}
-                                copy.description = evt.target.value
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="description">Select Agent:</label>
-                    <select id="providers" 
-                        onChange={
-                            (evt) => {
-                                const copy = {...ticket}
-                                copy.description = evt.target.value
+                                copy.time = evt.target.value
+                                updateTicket(copy)
                             }
                         } />
                 </div>
             </fieldset>
             
-            <button className="btn btn-primary" onClick={saveTicket}>
+            
+            <button className="btn btn-primary" onClick={updateTicket}>
                 Send Request
             </button>
         </form>
-    )
+    
+</>)
 }
