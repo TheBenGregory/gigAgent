@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
 import "./NavBar.css";
 import { getUsers } from "../apiManager/apiManager.js"
@@ -6,8 +6,26 @@ import { getCurrentUser } from "../apiManager/apiManager.js";
 import logo from "./logo.png";
 
 export const NavBar = (props) => {
-    const users = getUsers()
-    const currentUsers = getCurrentUser()
+    const [ users, setUsers ] = useState([])
+    const [providerUser, setProviderUser] = useState({})
+    const currentUser = getCurrentUser()
+    const myJobs = (<li className="navbar__item active">
+    <Link className="navbar__link" to="/TicketList">My Jobs</Link></li>)
+    const reqShow = (<li className="navbar__item active">
+    <Link className="navbar__link" to="/providers">Request a Showing</Link></li>)
+
+console.log(users)
+    useEffect( () => {
+         
+        const findProvider = users.find(emp => currentUser === emp.id)
+        setProviderUser(findProvider)
+    }, 
+    [users])
+    useEffect( () => {
+         getUsers().then(setUsers) 
+    }, 
+    [])
+
     return (
         <ul className="navbar">
             <li className="navbar__item active">
@@ -17,14 +35,7 @@ export const NavBar = (props) => {
                 <Link className="navbar__link" to="/about">About</Link>
             </li>
             { 
-            currentUsers?.isProvider === "true" ?
-                <>
-                    <li className="navbar__item active">
-                        <Link className="navbar__link" to="/TicketList">My Jobs</Link></li></>
-                        :
-                        <>
-                    <li className="navbar__item active">
-                        <Link className="navbar__link" to="/providers">Request a Showing</Link></li></>
+            providerUser?.isProvider === false ? reqShow : myJobs  
                 }
                         
             <li className="navbar__item active">
