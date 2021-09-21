@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react"
-
+import { getCurrentUser } from "../apiManager/apiManager.js";
 
 export const TicketList = () => {
     const [allTickets, setAllTickets] = useState([])
-    const [isAssigned, setAssignment] = useState([])
+    // const [isAssigned, setAssignment] = useState([])
+    const currentUser = getCurrentUser() 
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/reqJobs?_expand=user")
+            fetch(`http://localhost:8088/reqJobs?userId=${currentUser}&_expand=user`)
                 .then(res => res.json())
                 .then((data) => {
                     setAllTickets(data)
@@ -17,11 +18,12 @@ export const TicketList = () => {
         },
         []
     )
-    useEffect(
-        () => { 
-        const onlyMyTickets = allTickets.filter(emp => emp.id === parseInt(localStorage.getItem(isAssigned.id)))
-        setAssignment(onlyMyTickets.join(", "))
-    }, [allTickets])
+    // useEffect(
+    //     () => { 
+    //     const onlyMyTickets = allTickets.filter(emp => emp.userId === isAssigned.consumerId)
+    //     setAssignment(onlyMyTickets)
+    //     console.log(onlyMyTickets)
+    // }, [allTickets])
     return (
         <>
             

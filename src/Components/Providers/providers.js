@@ -40,9 +40,10 @@ export const Providers = () => {
                 
                 {
                     isProviders.map((providerObject) => {
+                        console.log(providerObject)
                         return (
                              <div className="gig__link">
-                           <Link to="/TicketForm"> <div key={ `provider--${providerObject.id}` }>  { providerObject.name }</div> </Link>
+                           <Link to={`/TicketForm/${providerObject.id}`}> <div key={ `provider--${providerObject.id}` }>  { providerObject.name }</div> </Link>
                             </div>
                         )
                             

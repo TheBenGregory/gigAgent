@@ -1,13 +1,16 @@
 import React, { useState } from "react"
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 
 
 export const TicketForm = () => {
+   
     const [ticket, updateTicket] = useState({
         isComplete: false}
     );
     
+    const { ticketId } = useParams()
+
     const history = useHistory()
 
     const submitTicket = (evt) => {
@@ -15,7 +18,7 @@ export const TicketForm = () => {
         const newTicket = {
             clientName: ticket.clientName,
             consumerId: parseInt(localStorage.getItem("agent_user")),
-            userId: ticket.userId,
+            userId: parseInt(ticketId),
             date: ticket.date,
             phoneNumber: ticket.phoneNumber,
             time: ticket.time,
@@ -23,7 +26,10 @@ export const TicketForm = () => {
             isComplete: ticket.isComplete
         }
     
-
+        // const getUserId = (userId) => {
+        //     return fetch(`http://localhost:8088/users/${userid}`)
+        //         .then(res => res.json())
+        // }
 
         const fetchOption = {
             method: "POST",

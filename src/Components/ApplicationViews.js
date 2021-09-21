@@ -17,8 +17,9 @@ export const ApplicationViews = () => {
             <Route path="/about">
                 <About />
             </Route>    
-            <Route path="/TicketForm">
-                <TicketForm />
+            <Route exact path="/TicketForm/:ticketId(\d+)">
+            <TicketForm />
+                
             </Route>
             <Route path="/providers">
                 <Providers />

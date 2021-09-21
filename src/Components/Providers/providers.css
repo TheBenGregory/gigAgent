@@ -16,11 +16,3 @@
     word-spacing: 5%;
 }
 
-.user__list {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    padding: 10%;
-    word-spacing: 5%;
-}

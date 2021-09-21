@@ -6,38 +6,39 @@ import { getCurrentUser } from "../apiManager/apiManager.js";
 import logo from "./logo.png";
 
 export const NavBar = (props) => {
-    const [ users, setUsers ] = useState([])
+    const [users, setUsers] = useState([])
     const [providerUser, setProviderUser] = useState({})
     const currentUser = getCurrentUser()
     const myJobs = (<li className="navbar__item active">
-    <Link className="navbar__link" to="/TicketList">My Jobs</Link></li>)
+        <Link className="navbar__link" to="/TicketList">My Jobs</Link></li>)
     const reqShow = (<li className="navbar__item active">
-    <Link className="navbar__link" to="/providers">Request a Showing</Link></li>)
+        <Link className="navbar__link" to="/providers">Request a Showing</Link></li>)
 
-console.log(users)
-    useEffect( () => {
-         
+
+    useEffect(() => {
+        getUsers().then(setUsers)
+    },
+        [])
+        
+    useEffect(() => {
+
         const findProvider = users.find(emp => currentUser === emp.id)
         setProviderUser(findProvider)
-    }, 
-    [users])
-    useEffect( () => {
-         getUsers().then(setUsers) 
-    }, 
-    [])
+    },
+        [users])
 
     return (
         <ul className="navbar">
             <li className="navbar__item active">
-                <Link className="navbar__home" to="/"> <img src={ logo } alt="logo" style={{ height: "80px", paddingRight: "10px" }}></img></Link>
+                <Link className="navbar__home" to="/"> <img src={logo} alt="logo" style={{ height: "80px", paddingRight: "10px" }}></img></Link>
             </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/about">About</Link>
             </li>
-            { 
-            providerUser?.isProvider === false ? reqShow : myJobs  
-                }
-                        
+            {
+                providerUser?.isProvider === false ? reqShow : myJobs
+            }
+
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/userprofile">Profile</Link>
             </li>
