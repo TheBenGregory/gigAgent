@@ -10,15 +10,16 @@ export const TicketForm = () => {
     
     const history = useHistory()
 
-    const submitTicket = () => {
+    const submitTicket = (evt) => {
+        evt.preventDefault()
         const newTicket = {
-            clientName: "",
+            clientName: ticket.clientName,
             consumerId: parseInt(localStorage.getItem("agent_user")),
-            userId: 1,
-            date: "",
-            phoneNumber: "",
-            time: "",
-            address: "",
+            userId: ticket.userId,
+            date: ticket.date,
+            phoneNumber: ticket.phoneNumber,
+            time: ticket.time,
+            address: ticket.address,
             isComplete: ticket.isComplete
         }
     
@@ -128,7 +129,7 @@ export const TicketForm = () => {
             </fieldset>
             
             
-            <button className="btn btn-primary" onClick={updateTicket}>
+            <button className="btn btn-primary" onClick={submitTicket}>
                 Send Request
             </button>
         </form>
