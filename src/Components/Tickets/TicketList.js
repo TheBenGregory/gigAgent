@@ -7,15 +7,17 @@ export const TicketList = () => {
     const currentUser = getCurrentUser() 
     
     const markComplete = (id) => {
-        fetch(`http://localhost:8088/reqJobs/${id}`, {
+        return fetch(`http://localhost:8088/reqJobs/${id}`, {
             method: "DELETE"
         })
     }
-
+    const getJobs = () => {
+        return fetch(`http://localhost:8088/reqJobs?userId=${currentUser}&_expand=user`)
+        .then(res => res.json())
+    }
     useEffect(
         () => {
-            fetch(`http://localhost:8088/reqJobs?userId=${currentUser}&_expand=user`)
-                .then(res => res.json())
+            getJobs()
                 .then((data) => {
                     setAllTickets(data)
                 }
@@ -45,6 +47,8 @@ export const TicketList = () => {
                             return <div key={ `profile--${ticket.id}` }> Job Requested at { ticket.address } on { ticket.date } with { ticket.clientName } at { ticket.time }<div className="button">
                             <button onClick={() => {
                                 markComplete(ticket.id)
+                                .then(getJobs)
+                                .then(jobRender => setAllTickets(jobRender)) 
                             }}>Mark Job Complete</button></div></div>
 
                             
