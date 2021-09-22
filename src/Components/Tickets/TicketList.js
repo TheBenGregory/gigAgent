@@ -5,6 +5,12 @@ export const TicketList = () => {
     const [allTickets, setAllTickets] = useState([])
     // const [isAssigned, setAssignment] = useState([])
     const currentUser = getCurrentUser() 
+    
+    const markComplete = (id) => {
+        fetch(`http://localhost:8088/reqJobs/${id}`, {
+            method: "DELETE"
+        })
+    }
 
     useEffect(
         () => {
@@ -17,13 +23,18 @@ export const TicketList = () => {
                 )
         },
         []
-    )
+    
+    
+    
+            )
+
     // useEffect(
     //     () => { 
     //     const onlyMyTickets = allTickets.filter(emp => emp.userId === isAssigned.consumerId)
     //     setAssignment(onlyMyTickets)
     //     console.log(onlyMyTickets)
     // }, [allTickets])
+
     return (
         <>
             
@@ -31,7 +42,13 @@ export const TicketList = () => {
                     <h2>My Pending Jobs</h2>
                     {
                          allTickets.map((ticket) => {
-                            return <div key={ `profile--${ticket.id}` }> Job Requested at { ticket.address } on { ticket.date } with { ticket.clientName } at { ticket.time }</div>
+                            return <div key={ `profile--${ticket.id}` }> Job Requested at { ticket.address } on { ticket.date } with { ticket.clientName } at { ticket.time }<div className="button">
+                            <button onClick={() => {
+                                markComplete(ticket.id)
+                            }}>Mark Job Complete</button></div></div>
+
+                            
+                            
                     }
                     )
                 }
@@ -39,3 +56,5 @@ export const TicketList = () => {
                 </>
     )
     }
+
+    
