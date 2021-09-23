@@ -1,3 +1,4 @@
+import userEvent from "@testing-library/user-event";
 import React, { useState } from "react"
 import { useHistory, useParams } from "react-router";
 
@@ -23,7 +24,9 @@ export const TicketForm = () => {
             phoneNumber: ticket.phoneNumber,
             time: ticket.time,
             address: ticket.address,
-            isComplete: ticket.isComplete
+            isComplete: ticket.isComplete,
+            userBio: ticket.userBio
+          
         }
     
         // const getUserId = (userId) => {
@@ -68,7 +71,7 @@ export const TicketForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="phoneNumber">Client Phone:</label>
-                    <input
+                    <input 
                         required autoFocus
                         type="text"
                         className="form-control"

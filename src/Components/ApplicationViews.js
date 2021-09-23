@@ -11,7 +11,7 @@ import { TicketList } from "./Tickets/TicketList";
 export const ApplicationViews = () => {
     return (
         <>
-            <Route path="/">
+            <Route exact path="/">
                 <HomePage />
             </Route>
             <Route path="/about">
