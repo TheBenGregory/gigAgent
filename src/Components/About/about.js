@@ -1,13 +1,23 @@
 import React from "react";
 // import { Route, Redirect } from "react-router-dom";
+import "./about.css"
 
 
 
 export const About = () => {
-   return (<p> The app creates a gig-economy within an existing industry by creating work opportunities for less busy agents and services for busy agents. . The app connects agents with other agents who are able and willing to show a house on their behalf in exchange for payment. The app will allow agents to register as available in an area as well as register as needing assistance. Once an agent 
+   
+   return (
+<>
+      <h3 className="main"> gigAgent is my capstone project for Nashville Software School Cohort #50  </h3>
+      <div className="main"> It was created using JavaScript, ReactJS, and CSS</div>
 
-      registers as available, another agent can request they do a showing on their behalf. That agent can in turn accept or deny the request. The showing agent can mark complete once a showing has happened and get paid for their time.  </p>)
+      <div className="social_header">For more information or to contact me please reach out to me at any of the locations below:</div>
 
+      <ul className="social">
+         <li className="social__link">LinkedIn</li>
+         <li className="social__link">gitHub</li>
+         <li className="social__link">JBGregory.com</li>
+      </ul>
 
-
+</>)
 }

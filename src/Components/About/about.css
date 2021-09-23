@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+.main {
+    display: flex;
+    padding: 3%;
+    justify-content: center;
+}
+
+.social__header{
+    display: flex;
+    
+    justify-content: center;
+}
+
+.social {
+    display: flex;
+    padding: 3%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.social__link {
+    display: flex;
+    padding: 3%;
+    justify-content: center;
+}

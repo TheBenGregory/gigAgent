@@ -16,3 +16,8 @@
     word-spacing: 5%;
 }
 
+.profile__pic {
+    display: flex;
+    size: 50px;
+}
+

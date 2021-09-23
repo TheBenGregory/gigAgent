@@ -43,7 +43,7 @@ export const Providers = () => {
                         console.log(providerObject)
                         return (
                              <div className="gig__link">
-                           <Link to={`/TicketForm/${providerObject.id}`}> <div key={ `provider--${providerObject.id}` }>  { providerObject.name }</div> </Link>
+                           <Link to={`/TicketForm/${providerObject.id}`}> <div key={ `provider--${providerObject.id}` }> <img className="profile__pic" src={providerObject.imageUrl} style={{ height: "100px", paddingRight: "10px" }}/>{ providerObject.name }</div></Link><div>is an agent with {providerObject.brokerage} and services {providerObject.location} County. </div>
                             </div>
                         )
                             

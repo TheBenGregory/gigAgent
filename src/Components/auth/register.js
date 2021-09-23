@@ -2,10 +2,11 @@ import React, { useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
 import "./login.css"
 
-export const Register = (props) => {
+
+export const Register = () => {
     const [user, setUser] = useState({})
     const conflictDialog = useRef()
-
+    
     const history = useHistory()
 
     const existingUserCheck = () => {
