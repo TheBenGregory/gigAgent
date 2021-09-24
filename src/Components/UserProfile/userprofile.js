@@ -4,11 +4,12 @@ import { useHistory } from "react-router";
 
 export const Profile = () => {
     const [currentUser, setCurrentUser] = useState({})
-    const [isLoggedIn, setProfile] = useState([])
-    const [userBio, setBio] = useState({
-        userBio: ""
-    })
-    const user =  parseInt(localStorage.getItem("agent_user"))
+  
+    const [userBio, setBio] = useState(
+        
+    )
+    console.log(userBio)
+    const userId =  parseInt(localStorage.getItem("agent_user"))
     // const [image, setImage] = useState('')
     // const [loading, setLoading] = useState(false)
     // );
@@ -16,7 +17,7 @@ export const Profile = () => {
 
     useEffect(
         () => {
-            return fetch("http://localhost:8088/users/user")
+            return fetch(`http://localhost:8088/users/${userId}`)
                 .then(res => res.json())
                 .then((profileObj) => {
                     setCurrentUser(profileObj)
@@ -32,7 +33,7 @@ export const Profile = () => {
 
     
     const deleteUser = (id) => {
-        fetch(`http://localhost:8088/users/${id}`, {
+       return fetch(`http://localhost:8088/users/${id}`, {
             method: "DELETE"
         }
         ).then(history.push("/login"))
@@ -45,11 +46,18 @@ export const Profile = () => {
 
 
     }
-    const putBio = (id, userBio) => {
-        fetch(`http://localhost:8088/users/${id}`, {
-            method: "PUT"
-        }
-        )
+    const patchBio = (id, bio) => {
+       return fetch(`http://localhost:8088/users/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                userBio: bio
+            }),
+            headers: {
+                "Content-Type": "application/json"
+        },
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))
     }
 
     // const uploadImage = async e => {
@@ -86,11 +94,12 @@ export const Profile = () => {
 
                 
                     
-                        return <div className="user__card"><div key={`profile--${currentUser.id}`}>  Welcome {currentUser.name.split(` `)[0]}!
-                            <li className="user__list">Brokerage: {currentUser.brokerage}</li>
-                            <li className="user__list">Location: {currentUser.location} County</li>
+                         <div className="user__card"><div key={`profile--${currentUser.id}`}>  Welcome {currentUser?.name?.split(` `)[0]}!
+                             <li className="user__list">Brokerage: {currentUser.brokerage}</li>
                             <li className="user__list">Email: {currentUser.email}</li>
-                            <li className="user__list">gigAgent? {currentUser.isProvider ? "Yes" : "No"}</li>
+                            <li className="user__list">gigAgent? {currentUser.isProvider ? "Yes" : "No"}</li>  
+                           <li className="user__list">Location: {currentUser.location} County</li>
+                           <li className="user__list">About Me: {currentUser.userBio} </li>
                             {/* <li className="uploader">
                                 <h2>Upload Profile Picture</h2>
                                 <input 
@@ -113,7 +122,7 @@ export const Profile = () => {
                                 <input onChange={submitBio} type="text" id="userBio" className="bio" placeholder="about me" />
                             </div>
                             <fieldset >
-                                {/* <button className="button" onClick={putBio(currentUser.id, profileObject.userBio)} type="submit">Submit</button> */}
+                                <button className="button" onClick={() => patchBio(currentUser.id, userBio.userBio)} type="submit">Submit</button>
                             </fieldset>
                         </div>
                             
