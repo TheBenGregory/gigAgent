@@ -25,3 +25,13 @@
     padding: 3%;
     justify-content: center;
 }
+
+.icons{
+    display: flex;
+    size: 5%;
+    opacity: 50%;
+}
+
+.icon__text {
+    opacity: 50%;
+}
