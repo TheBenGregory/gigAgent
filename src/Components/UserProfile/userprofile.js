@@ -27,6 +27,14 @@ export const Profile = () => {
 
 
 
+    
+    const deleteUser = (id) => {
+        fetch(`http://localhost:8088/users/${id}`, {
+            method: "DELETE"
+        }
+        ).then(history.push("/login"))
+    }
+
     const submitBio = (evt) => {
         const copy = { ...userBio }
         copy[evt.target.id] = evt.target.value
@@ -34,12 +42,11 @@ export const Profile = () => {
 
 
     }
-
-    const deleteUser = (id) => {
-        fetch(`http://localhost:8088/users/${id}`, {
-            method: "DELETE"
+    const putBio = (userBio) => {
+        fetch(`http://localhost:8088/users/${userBio}`, {
+            method: "PUT"
         }
-        ).then(history.push("/login"))
+        )
     }
 
     useEffect(
@@ -65,23 +72,24 @@ export const Profile = () => {
                             <li className="user__list">Location: {profileObject.location} County</li>
                             <li className="user__list">Email: {profileObject.email}</li>
                             <li className="user__list">gigAgent? {profileObject.isProvider ? "Yes" : "No"}</li>
-                            <button className="delete__button" onClick={() => {
+                            <button className="button" onClick={() => {
                                 deleteUser(profileObject.id)
                                 console.log(profileObject.id)
-                            }}>Delete my Account</button></div></div>
-
+                            }}>Delete my Account</button></div><div>
+                                <label htmlFor="userBio"> About Me </label>
+                                <input onChange={submitBio} type="text" id="userBio" className="bio" placeholder="about me" />
+                            </div>
+                            <fieldset >
+                                <button className="button" OnClick={putBio(profileObject.userBio)} type="submit">Submit</button>
+                            </fieldset>
+                        </div>
+                            
+                            
                     }
-
                     )
-
+                    
                 }
-                <fieldset>
-                    <label htmlFor="userBio"> About Me </label>
-                    <input onChange={submitBio} type="text" id="userBio" className="bio" placeholder="about me" />
-                </fieldset><fieldset>
-                    <button type="submit">Submit</button>
-                </fieldset>
-            </article>
+                </article>
 
         </>
     )
