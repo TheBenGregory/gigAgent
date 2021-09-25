@@ -44,4 +44,10 @@
 .bio {
     display: flex;
     padding: 5%;
+    width: 15em;
+}
+
+.biobox {
+    display: flex;
+    height: 100px;
 }
