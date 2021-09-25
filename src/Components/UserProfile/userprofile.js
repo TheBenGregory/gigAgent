@@ -126,7 +126,7 @@ export const Profile = () => {
                         console.log(currentUser.id)
                     }}>Delete my Account</button></div><div className="bio">
                         <label htmlFor="userBio"> About Me </label>
-                        <input onChange={submitBio} type="text" id="userBio" className="bio" placeholder="about me" />
+                        <input clasName="biobox" onChange={submitBio} type="text" id="userBio"  placeholder="about me" rows="4" size="40" maxlength="50" />
                     </div>
                     <fieldset >
                         <button className="button" onClick={() => patchBio(currentUser.id, userBio.userBio)}  type="submit">Submit</button>
