@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { getCurrentUser } from "../apiManager/apiManager.js";
-
+import  "./TicketList.css"
+import moment from "moment";
 export const TicketList = () => {
     const [allTickets, setAllTickets] = useState([])
     // const [isAssigned, setAssignment] = useState([])
@@ -44,8 +45,8 @@ export const TicketList = () => {
                     <h2>My Pending Jobs</h2>
                     {
                          allTickets.map((ticket) => {
-                            return <div key={ `profile--${ticket.id}` }> Job Requested at { ticket.address } on { ticket.date } with { ticket.clientName } at { ticket.time }<div className="button">
-                            <button onClick={() => {
+                            return <div key={ `profile--${ticket.id}` }> Showing requested at { ticket.address } on {moment(ticket.date).calendar()}  with { ticket.clientName } at { ticket.time }. {ticket.clientName.split(` `)[0]} can be reached at { ticket.phoneNumber }<div>
+                            <button className="job__button" onClick={() => {
                                 markComplete(ticket.id)
                                 .then(getJobs)
                                 .then(jobRender => setAllTickets(jobRender)) 
