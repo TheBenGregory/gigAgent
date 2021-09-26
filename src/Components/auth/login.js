@@ -42,6 +42,8 @@ export const Login = () => {
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1>Welcome to gigAgent</h1>
                     <h2>Please sign in</h2>
+                    <div> CBode@gmail.com</div>
+                    <div> ABins@gmail.com</div>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
                         <input type="email"
