@@ -3,7 +3,10 @@ import React, { useState } from "react"
 import { useHistory, useParams } from "react-router";
 import ReactDatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css'
-
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
+import Modal from 'react-modal';
 
 export const TicketForm = () => {
 
@@ -13,8 +16,9 @@ export const TicketForm = () => {
         isComplete: false
     }
     );
+    const [modalIsOpen, setIsOpen] = React.useState(false);
     const [selectedDate, setSelectedDate] = useState(null)
-
+    const [number, setNumber] = useState()
     const submitTicket = (evt) => {
         evt.preventDefault()
         const newTicket = {
@@ -22,7 +26,7 @@ export const TicketForm = () => {
             consumerId: parseInt(localStorage.getItem("agent_user")),
             userId: parseInt(ticketId),
             date: selectedDate,
-            phoneNumber: ticket.phoneNumber,
+            phoneNumber: number,
             time: ticket.time,
             address: ticket.address,
             isComplete: ticket.isComplete,
@@ -73,19 +77,20 @@ export const TicketForm = () => {
                 <fieldset>
                     <div className="form-group">
                         <label htmlFor="phoneNumber">Client Phone:</label>
-                        <input
-                            maxLength="10"
-                            required autoFocus
-                            type="text"
-                            className="form-control"
-                            placeholder="Phone #"
-                            onChange={
-                                (evt) => {
-                                    const copy = { ...ticket }
-                                    copy.phoneNumber = evt.target.value
-                                    updateTicket(copy)
-                                }
-                            } />
+                        <PhoneInput
+                            placeholder="Enter phone number"
+                            country={'us'}
+                            international={false}
+                            value={number}
+                            onChange={setNumber}/> 
+                            <div
+                        onChange={
+                            (evt) => {
+                                const copy = { ...ticket }
+                                copy.phoneNumber = evt.target.value
+                                updateTicket(copy)
+                            }
+                        } />
                     </div>
                 </fieldset>
                 <fieldset>
@@ -108,23 +113,23 @@ export const TicketForm = () => {
                 <fieldset>
                     <div className="form-group">
                         <label htmlFor="date">Date:</label>
-                        <ReactDatePicker 
-                        placeholderText="Date"
-                        required
-                        selected={selectedDate} 
-                        onChange={date => setSelectedDate(date)}
-                        dateFormat='dd/MM/yyyy'
-                        minDate={new Date()}
-                        isClearable
+                        <ReactDatePicker
+                            placeholderText="Date"
+                            required
+                            selected={selectedDate}
+                            onChange={date => setSelectedDate(date)}
+                            dateFormat='dd/MM/yyyy'
+                            minDate={new Date()}
+                            isClearable
                         />
                         {<div
-                        onChange={
-                            (evt) => {
-                                const copy = { ...ticket }
-                                copy.date = evt.target.value
-                                updateTicket(copy)
-                            }} />
-                            }
+                            onChange={
+                                (evt) => {
+                                    const copy = { ...ticket }
+                                    copy.date = evt.target.value
+                                    updateTicket(copy)
+                                }} />
+                        }
                     </div>
                 </fieldset>
                 <fieldset>
@@ -135,6 +140,8 @@ export const TicketForm = () => {
                             type="time"
                             className="form-control"
                             placeholder=""
+                            value="09:00" 
+                            
                             onChange={
                                 (evt) => {
                                     const copy = { ...ticket }
