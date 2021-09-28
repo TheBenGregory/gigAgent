@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
 import "./login.css"
+import { Switch } from 'antd';
+import "antd/lib/switch/style/index.css";
 
 
 export const Register = () => {
@@ -83,7 +85,7 @@ export const Register = () => {
                 </fieldset>
                 <fieldset>
                     <label htmlFor="isProvider"> Provider? </label>
-                    <input onChange={(evt) => { handleCheckbox(evt) }} type="checkbox" id="isProvider" checked={user.isProvider} className="form-control" />
+                    <Switch onChange={(evt) => { handleCheckbox(evt) }} type="checkbox" id="isProvider" checked={user.isProvider} className="form-control" />
                 </fieldset>
                 <fieldset>
                     <button type="submit"> Register </button>

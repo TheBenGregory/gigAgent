@@ -2,10 +2,18 @@ import React, { useEffect, useState } from "react"
 import { getCurrentUser } from "../apiManager/apiManager.js";
 import  "./TicketList.css"
 import moment from "moment";
+import { Switch } from "antd";
+
 export const TicketList = () => {
     const [allTickets, setAllTickets] = useState([])
-    // const [isAssigned, setAssignment] = useState([])
+    const [isAssigned, setAssignment] = useState([])
     const currentUser = getCurrentUser() 
+    
+    // const phoneFormat = allTickets.map(ticket) => {
+    //     let formatPhone = "(xxx)-xxx-xxxx";
+    //     for (let val of ticket.phoneNumber) {
+    //         formatPhone = formatPhone.replace('x', val);
+    //     }}
     
     const markComplete = (id) => {
         return fetch(`http://localhost:8088/reqJobs/${id}`, {
@@ -30,13 +38,15 @@ export const TicketList = () => {
     
     
             )
+            
+                 
 
-    // useEffect(
-    //     () => { 
-    //     const onlyMyTickets = allTickets.filter(emp => emp.userId === isAssigned.consumerId)
-    //     setAssignment(onlyMyTickets)
-    //     console.log(onlyMyTickets)
-    // }, [allTickets])
+    useEffect(
+        () => { 
+        const onlyMyTickets = allTickets.filter(emp => emp.userId === isAssigned.consumerId)
+        setAssignment(onlyMyTickets)
+        console.log(onlyMyTickets)
+    }, [allTickets])
 
     return (
         <>
@@ -50,7 +60,10 @@ export const TicketList = () => {
                                 markComplete(ticket.id)
                                 .then(getJobs)
                                 .then(jobRender => setAllTickets(jobRender)) 
-                            }}>Mark Job Complete</button></div></div>
+                            }}>Mark Job Complete</button></div>
+                           <div></div> <div><button className="job__button">Deny Request</button></div></div>
+                            
+                           
 
                             
                             

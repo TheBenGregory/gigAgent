@@ -12,6 +12,7 @@ export const NavBar = (props) => {
     const [currentUser, setCurrentUser] = useState([])
     const userId = parseInt(localStorage.getItem("agent_user"))
     const profile = Profile()
+    const profileUser = getCurrentUser()
 
     const myJobs = (<li className="navbar__item active">
         <Link className="navbar__link" to="/TicketList">My Jobs</Link></li>)
@@ -39,12 +40,12 @@ export const NavBar = (props) => {
     )
 
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     const findProvider = users.find(emp => currentUser === emp.id)
-    //     setProviderUser(findProvider)
-    // },
-    //     [users])
+        const findProvider = users.find(emp => profileUser === emp.id)
+        setProviderUser(findProvider)
+    },
+        [users])
 
     return (
 
