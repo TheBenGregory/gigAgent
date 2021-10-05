@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
-.main {
+.main__about {
     display: flex;
     padding: 3%;
     justify-content: center;

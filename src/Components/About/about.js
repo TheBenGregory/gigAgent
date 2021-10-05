@@ -7,6 +7,7 @@ import "./about.css"
 export const About = () => {
    
    return (
+      <div className="main__about">
 <>
       <h3 className="main"> gigAgent is my capstone project for Nashville Software School Cohort #50  </h3>
       <div className="main"> It was created using JavaScript, ReactJS, and CSS</div>
@@ -20,5 +21,5 @@ export const About = () => {
          
       </ul>
 
-</>)
+</></div>)
 }

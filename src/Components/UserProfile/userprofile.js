@@ -13,8 +13,6 @@ export const Profile = () => {
        imageUrl: ''
     })
     const [loading, setLoading] = useState(false)
-
-
     const history = useHistory()
 
     useEffect(
@@ -53,6 +51,7 @@ export const Profile = () => {
             method: "PATCH",
             body: JSON.stringify({
                 userBio: bio
+                
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -63,45 +62,45 @@ export const Profile = () => {
     }
     
 
-    const uploadImage = async e => {
-        const files = e.target.files
-        const data = new FormData()
-        data.append('file', files[0])
-        data.append('upload_preset', 'darwin')
-        setLoading(true)
-        const res = await fetch(
-            'https://api.cloudinary.com/v1_1/dsmjpyt8q/image/upload', {
-            method: 'POST',
-            body: data
-        }
-        )
-        .then(res => {
-            const copy = { ...image }
-            copy.imageUrl = res?.url
-            copy.userId = currentUser
+    // const uploadImage = async e => {
+    //     const files = e.target.files
+    //     const data = new FormData()
+    //     data.append('file', files[0])
+    //     data.append('upload_preset', 'darwin')
+    //     setLoading(true)
+    //     const res = await fetch(
+    //         'https://api.cloudinary.com/v1_1/dsmjpyt8q/image/upload', {
+    //         method: 'POST',
+    //         body: data
+    //     }
+    //     )
+    //     .then(res => {
+    //         const copy = { ...image }
+    //         copy.imageUrl = res?.url
+    //         copy.userId = currentUser
             
-            patchImg(userId, copy.imageUrl)
-            // const file = await res.json()
-            setImage(copy.imageUrl)
-            setLoading(false)
-        })
+    //         patchImg(userId, copy.imageUrl)
+    //         // const file = await res.json()
+    //         setImage(copy.imageUrl)
+    //         setLoading(false)
+    //     })
 
                
-            }
+    //         }
             
-            const patchImg = (id, img) => {
-                return fetch(`http://localhost:8088/users/${id}`, {
-                    method: "PATCH",
-                    body: JSON.stringify({
-                        imageUrl: img
-                    }),
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                })
-                    .then(response => response.json())
-                    .then(json => console.log(json))
-            }
+    //         const patchImg = (id, img) => {
+    //             return fetch(`http://localhost:8088/users/${id}`, {
+    //                 method: "PATCH",
+    //                 body: JSON.stringify({
+    //                     imageUrl: img
+    //                 }),
+    //                 headers: {
+    //                     "Content-Type": "application/json"
+    //                 },
+    //             })
+    //                 .then(response => response.json())
+    //                 .then(json => console.log(json))
+    //         }
             
             
             
@@ -120,33 +119,17 @@ return (
                 <li className="user__list">gigAgent? {currentUser.isProvider ? "Yes" : "No"}</li>
                 <li className="user__list">Location: {currentUser.location} County</li>
                 <li className="user__list">About Me: {currentUser.userBio} </li>
-                <div className="uploader">
-                    <h4>Upload Profile Picture</h4>
-                    <input
-                        type="file"
-                        name="profilePicture"
-                        placeholder="Set Profile Picture"
-                        onChange={uploadImage}
-                        />
-                    {loading
-                        ? (
-                            <h3>Loading...</h3>
-                            ) :
-                            (<img src={image} style={{ width: '200px' }} /> 
-                            
-                        )}
-                <button className="picButton" onClick={() => patchImg(image)}>Submit Photo</button>
+                
+                    <div className="about__me"><label htmlFor="userBio"> About Me </label></div>
+                    <input className="biobox" onChange={submitBio} type="text" id="userBio" placeholder="about me" rows="4" size="40" maxlength="50" />
+                </div>
+                <div className="submit">
+                    <button className="button" onClick={() => patchBio(currentUser.id, userBio.userBio)} type="submit">Submit</button>
                 </div>
                 <button className="button" onClick={() => {
                     deleteUser(currentUser.id)
                     console.log(currentUser.id)
-                }}>Delete my Account</button></div><div className="bio">
-                    <label htmlFor="userBio"> About Me </label>
-                    <input clasName="biobox" onChange={submitBio} type="text" id="userBio" placeholder="about me" rows="4" size="40" maxlength="50" />
-                </div>
-                <fieldset >
-                    <button className="button" onClick={() => patchBio(currentUser.id, userBio.userBio)} type="submit">Submit</button>
-                </fieldset>
+                }}>Delete my Account</button><div className="bio__card"></div>
             </div>
 
 
