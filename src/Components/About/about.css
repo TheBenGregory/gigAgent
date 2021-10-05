@@ -3,21 +3,54 @@
 
 .main__about {
     display: flex;
-    padding: 3%;
+    flex-direction: column;
+  width: 75%;
+  height: 500px;
+  position: relative;
+  margin: 0 auto;
+  height: 500px;
+  overflow: hidden;
+}
+.main__abt{
+    display: flex;
+    text-align: center;
+    padding-bottom: 5%;
+    padding-top: 5% ;
+    flex-direction: column;
+    
     justify-content: center;
+    background-color: rgb(179,242,255, 0.35) ;
+    border: 9px solid #1C6EA4;
+    border-radius: 17px;
+}
+
+.main__sub{
+    font-style: italic;
+    padding-top: 3%;
+    border-top: 1px solid black;
 }
 
 .social__header{
     display: flex;
-    
+    font-size: large;
+    font-style: italic;
+    padding-top: 5%;
     justify-content: center;
 }
-
+.main__h3{
+    font-size: 30px;
+}
 .social {
-    display: flex;
-    padding: 3%;
-    justify-content: center;
-    flex-direction: column;
+display: flex;
+flex-direction: row;
+justify-content: right;
+  width: 75%;
+  height: 500px;
+  padding: 5%;
+  position: relative;
+  margin: 0 auto;
+  height: 500px;
+  overflow: hidden;
 }
 
 .social__link {

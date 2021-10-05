@@ -1,17 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
-.body__homepage {
-   display: grid;
-   flex-direction: row;
-   justify-content: center;
-  
-   
-}
+
 
 .mainbox{ 
     flex-direction: row;
-    padding: 15%;
+    padding: 2%;
     justify-content: flex-start;
     text-align: center;
 }
@@ -45,6 +39,7 @@
 
 .head {
     flex-direction: row;
+    font-size: 35px
 
 }
 .welcome {

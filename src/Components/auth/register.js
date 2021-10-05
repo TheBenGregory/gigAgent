@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 import "./login.css"
 import { Switch } from 'antd';
 import "antd/lib/switch/style/index.css";
-
+import "./register.css"
 
 export const Register = () => {
     const [user, setUser] = useState({})
@@ -65,31 +65,30 @@ export const Register = () => {
 
             <form className="form--login" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">Please Register for gigAgent</h1>
-                <fieldset>
+               <div className="login__box"> 
                     <label htmlFor="name"> Full Name </label>
                     <input onChange={updateUser}
                         type="text" id="name" className="form-control"
                         placeholder="Enter your name" required autoFocus />
-                </fieldset>
-                <fieldset>
+               
+                
                     <label htmlFor="brokerage"> Brokerage </label>
                     <input onChange={updateUser} type="text" id="brokerage" className="form-control" placeholder="Brokerage" required />
-                </fieldset>
-                <fieldset>
+                
+                
                     <label htmlFor="location"> County </label>
                     <input onChange={updateUser} type="text" id="location" className="form-control" placeholder="County" required />
-                </fieldset>
-                <fieldset>
+               
+                
                     <label htmlFor="email"> Email address </label>
                     <input onChange={updateUser} type="email" id="email" className="form-control" placeholder="Email address" required />
-                </fieldset>
-                <fieldset>
+                
                     <label htmlFor="isProvider"> Provider? </label>
                     <Switch onChange={(evt) => { handleCheckbox(evt) }} type="checkbox" id="isProvider" checked={user.isProvider} className="form-control" />
-                </fieldset>
-                <fieldset>
-                    <button type="submit"> Register </button>
-                </fieldset>
+                
+                <div>
+                    <button className="button" type="submit"> Register </button>
+                </div></div>
             </form>
         </main>
     )
