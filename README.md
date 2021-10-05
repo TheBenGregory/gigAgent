@@ -12,6 +12,17 @@ Once an agent registers as available, another agent can request they do a showin
 
 gigAgent is built with:
 * HTML
+* CSS
 * JavaScript
 * React
+
+## Future Plans
+
+I intend to keep developing this project on the side. There are still a handful of bugs present and a list of items I will add as I go including:
+* Image upload (code is written but not working at present)
+* Complete functionality of the "mark complete" option to switch the isComplete boolean
+* Complete gigAgents cards to display with user photo and bio
+* Overhaul of color scheme
+
+These are a few of the immediate tickets I will tackle on this project. 
 
