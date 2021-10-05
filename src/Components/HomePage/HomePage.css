@@ -1,11 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
-body {
-    font-family: 'Spartan', sans-serif;
+.body__homepage {
+   display: grid;
+   flex-direction: row;
+   justify-content: center;
+  
+   
 }
 
+.mainbox{ 
+    flex-direction: row;
+    padding: 15%;
+    justify-content: flex-start;
+    text-align: center;
+}
 .main {
-    display: flex;
-    padding: 2%;
+    
+    padding: 3%;
+    border: 9px solid #1C6EA4;
+    border-radius: 17px;
+    background-color: rgb(179,242,255, 0.35) ;
+    
+    
+}
+.main2 {
+   
+    padding: 3%;
+    border: 9px solid #1C6EA4;
+    border-radius: 17px;
+    background-color: rgb(179,242,255, 0.35) ;
+}
+.main3{
+    font-style: italic;
+    font-weight: 600;
+    padding: 5%;
+    font-size: 50px;
+    justify-content: center;
+    align-items: center;
+    border: 9px solid #1C6EA4;
+    border-radius: 17px;
+    background-color: rgb(179,242,255, 0.35) ;
+}
+
+.head {
+    flex-direction: row;
+
+}
+.welcome {
+    flex-direction: row;
+    
+    justify-content: center;
+    font-style: italic;
 }

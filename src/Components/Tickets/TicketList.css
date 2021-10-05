@@ -1,4 +1,6 @@
 .job__button {
+	display: flex;
+	flex-wrap: wrap;
     box-shadow:inset 0px 0px 15px 3px #23395e;
 	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
 	background-color:#2e466e;
@@ -12,4 +14,34 @@
 	padding:9px 38px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #263666;
+}
+.deny__button{
+	display: flex;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	padding-left: 10%;
+}
+.comp__button {
+	display: flex;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	padding-left: 10%;
+}
+.h2{
+	flex-direction: row;
+	align-self: center;
+}
+.alltickets {
+	
+	font-size: large;
+	text-align: center;
+	align-content: space-between;
+	
+}
+.tickets {
+	padding: 2%;
+	border: 9px solid #1C6EA4;
+    border-radius: 17px;
+	justify-content: center;
+	
 }

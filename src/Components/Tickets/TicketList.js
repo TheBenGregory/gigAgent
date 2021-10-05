@@ -52,16 +52,17 @@ export const TicketList = () => {
         <>
             
         <article className="tickets">
-                    <h2>My Pending Jobs</h2>
+                    <h2 className="h2">My Pending Jobs</h2>
                     {
-                         allTickets.map((ticket) => {
-                            return <div key={ `profile--${ticket.id}` }> Showing requested at { ticket.address } on {moment(ticket.date).calendar("dddd, MMMM Do YYYY,")}  with { ticket.clientName } at { ticket.time }. {ticket.clientName.split(` `)[0]} can be reached at { ticket.phoneNumber }<div>
-                            <button className="job__button" onClick={() => {
+                        
+                            allTickets.map((ticket) => {
+                            return <div key={ `profile--${ticket.id}` }> <div className="alltickets">Showing requested at { ticket.address } on {moment(ticket.date).calendar("dddd, MMMM Do YYYY,")}  with { ticket.clientName } at { ticket.time }. {ticket.clientName.split(` `)[0]} can be reached at { ticket.phoneNumber }</div>
+                            <div className="comp__button"><button className="job__button" onClick={() => {
                                 markComplete(ticket.id)
                                 .then(getJobs)
                                 .then(jobRender => setAllTickets(jobRender)) 
                             }}>Mark Job Complete</button></div>
-                           <div></div> <div><button className="job__button">Deny Request</button></div></div>
+                           <div></div> <div className="deny__button"><button className="job__button">Deny Request</button></div></div>
                             
                            
 
