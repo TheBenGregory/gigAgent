@@ -1,12 +1,10 @@
-import userEvent from "@testing-library/user-event";
 import React, { useState } from "react"
 import { useHistory, useParams } from "react-router";
 import ReactDatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
-import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
-import Modal from 'react-modal';
+import "./Ticketform.css"
 
 export const TicketForm = () => {
 
@@ -54,10 +52,10 @@ export const TicketForm = () => {
     }
 
     return (
-        <>
+        <div className="card"><>
             <form className="ticketForm">
                 <h2 className="ticketForm__title">Request a Showing</h2>
-                <fieldset>
+                <div>
                     <div className="form-group">
                         <label htmlFor="clientName">Client Name:</label>
                         <input
@@ -73,27 +71,9 @@ export const TicketForm = () => {
                                 }
                             } />
                     </div>
-                </fieldset>
-                <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="phoneNumber">Client Phone:</label>
-                        <PhoneInput
-                            placeholder="Enter phone number"
-                            country={'us'}
-                            international={false}
-                            value={number}
-                            onChange={setNumber}/> 
-                            <div
-                        onChange={
-                            (evt) => {
-                                const copy = { ...ticket }
-                                copy.phoneNumber = evt.target.value
-                                updateTicket(copy)
-                            }
-                        } />
-                    </div>
-                </fieldset>
-                <fieldset>
+                </div>
+                
+                <div>
                     <div className="form-group">
                         <label htmlFor="address">Showing Address:</label>
                         <input
@@ -109,8 +89,8 @@ export const TicketForm = () => {
                                 }
                             } />
                     </div>
-                </fieldset>
-                <fieldset>
+                </div>
+                <div>
                     <div className="form-group">
                         <label htmlFor="date">Date:</label>
                         <ReactDatePicker
@@ -131,8 +111,35 @@ export const TicketForm = () => {
                                 }} />
                         }
                     </div>
-                </fieldset>
-                <fieldset>
+                </div>
+                <div>
+                    <div className="form-group">
+                        <label htmlFor="phoneNumber">Client Phone:</label>
+                        <PhoneInput
+                            placeholder="Enter phone number"
+                            country={'us'}
+                            disableDropdown={"true"}
+                            inputStyle={{
+                                border: "3px solid #1C6EA4",
+                                borderRadius: "px",
+                                width: "auto",
+                                
+                              }}
+                              
+                            international={false}
+                            value={number}
+                            onChange={setNumber} />
+                        <div
+                            onChange={
+                                (evt) => {
+                                    const copy = { ...ticket }
+                                    copy.phoneNumber = evt.target.value
+                                    updateTicket(copy)
+                                }
+                            } />
+                    </div>
+                </div>
+                <div>
                     <div className="form-group">
                         <label htmlFor="time">Time:</label>
                         <input
@@ -140,8 +147,12 @@ export const TicketForm = () => {
                             type="time"
                             className="form-control"
                             placeholder=""
-                            value="09:00" 
-                            
+                            value="09:00"
+                            style={{
+                                border: "3px solid #1C6EA4",
+                                borderRadius: "5px",
+                                width: "auto"
+                            }}
                             onChange={
                                 (evt) => {
                                     const copy = { ...ticket }
@@ -150,13 +161,14 @@ export const TicketForm = () => {
                                 }
                             } />
                     </div>
-                </fieldset>
+                </div>
+                
 
-
-                <button className="btn btn-primary" onClick={submitTicket}>
+<div className="btn">
+                <button className="button" onClick={submitTicket}>
                     Send Request
-                </button>
+                </button></div>
             </form>
-
-        </>)
+</></div>
+        )
 }

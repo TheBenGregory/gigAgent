@@ -62,45 +62,45 @@ export const Profile = () => {
     }
     
 
-    // const uploadImage = async e => {
-    //     const files = e.target.files
-    //     const data = new FormData()
-    //     data.append('file', files[0])
-    //     data.append('upload_preset', 'darwin')
-    //     setLoading(true)
-    //     const res = await fetch(
-    //         'https://api.cloudinary.com/v1_1/dsmjpyt8q/image/upload', {
-    //         method: 'POST',
-    //         body: data
-    //     }
-    //     )
-    //     .then(res => {
-    //         const copy = { ...image }
-    //         copy.imageUrl = res?.url
-    //         copy.userId = currentUser
+    const uploadImage = async e => {
+        const files = e.target.files
+        const data = new FormData()
+        data.append('file', files[0])
+        data.append('upload_preset', 'darwin')
+        setLoading(true)
+        const res = await fetch(
+            'https://api.cloudinary.com/v1_1/dsmjpyt8q/image/upload', {
+            method: 'PUT',
+            body: data
+        }
+        )
+        .then(res => {
+            const copy = { ...image }
+            copy.imageUrl = res?.url
+            copy.userId = currentUser
             
-    //         patchImg(userId, copy.imageUrl)
-    //         // const file = await res.json()
-    //         setImage(copy.imageUrl)
-    //         setLoading(false)
-    //     })
+            patchImg(userId, copy.imageUrl)
+            // const file = await res.json()
+            setImage(copy.imageUrl)
+            setLoading(false)
+        })
 
                
-    //         }
+            }
             
-    //         const patchImg = (id, img) => {
-    //             return fetch(`http://localhost:8088/users/${id}`, {
-    //                 method: "PATCH",
-    //                 body: JSON.stringify({
-    //                     imageUrl: img
-    //                 }),
-    //                 headers: {
-    //                     "Content-Type": "application/json"
-    //                 },
-    //             })
-    //                 .then(response => response.json())
-    //                 .then(json => console.log(json))
-    //         }
+            const patchImg = (id, image) => {
+                return fetch(`http://localhost:8088/users/${id}`, {
+                    method: "PATCH",
+                    body: JSON.stringify({
+                        imageUrl: image
+                    }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                })
+                    .then(response => response.json())
+                    .then(json => console.log(json))
+            }
             
             
             
@@ -126,6 +126,7 @@ return (
                 <div className="submit">
                     <button className="button" onClick={() => patchBio(currentUser.id, userBio.userBio)} type="submit">Submit</button>
                 </div>
+                <div className="imgupload"> <input type="file" onChange={uploadImage}/> </div>
                 <button className="button" onClick={() => {
                     deleteUser(currentUser.id)
                     console.log(currentUser.id)

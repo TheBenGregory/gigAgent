@@ -32,7 +32,7 @@ export const Login = () => {
     }
 
     return (
-        <main className="container--login">
+        <div className="container--login">
             <dialog className="dialog dialog--auth" ref={existDialog}>
                 <div>User does not exist</div>
                 <button className="button--close" onClick={e => existDialog.current.close()}>Close</button>
@@ -42,18 +42,18 @@ export const Login = () => {
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1>Welcome to gigAgent</h1>
                     <h2>Please sign in</h2>
-                    <div> CBode@gmail.com</div>
-                    <div> ABins@gmail.com</div>
-                    <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
+                    <div className="hidden"> DLind@gmail.com</div>
+                    <div className="hidden"> ABins@gmail.com</div>
+                    <div className="input__email">
+                        <label htmlFor="inputEmail"> Please enter your email address </label>
                         <input type="email"
                             onChange={evt => set(evt.target.value)}
                             className="form-control"
                             placeholder="Email address"
                             required autoFocus />
-                    </fieldset>
+                    </div>
                     <fieldset>
-                        <button type="submit">
+                        <button className="button" type="submit">
                             Sign in
                         </button>
                     </fieldset>
@@ -62,6 +62,6 @@ export const Login = () => {
             <section className="link--register">
                 <Link to="/register">Not a member yet?</Link>
             </section>
-        </main>
+        </div>
     )
 }

@@ -62,7 +62,11 @@ export const TicketList = () => {
                                 .then(getJobs)
                                 .then(jobRender => setAllTickets(jobRender)) 
                             }}>Mark Job Complete</button></div>
-                           <div></div> <div className="deny__button"><button className="job__button">Deny Request</button></div></div>
+                           <div></div> <div className="deny__button"><button className="job__button" onClick={() => {
+                                markComplete(ticket.id)
+                                .then(getJobs)
+                                .then(jobRender => setAllTickets(jobRender)) 
+                            }}>Deny Request</button></div></div>
                             
                            
 
