@@ -33,11 +33,7 @@ export const TicketForm = () => {
         }
 
 
-        // const getUserId = (userId) => {
-        //     return fetch(`http://localhost:8088/users/${userid}`)
-        //         .then(res => res.json())
-        // }
-
+       
         const fetchOption = {
             method: "POST",
             headers: {

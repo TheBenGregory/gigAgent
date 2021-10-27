@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./userprofile.css";
 import { useHistory } from "react-router";
-// import { setPictures } from "../apiManager/apiManager";
 
 export const Profile = () => {
     const [currentUser, setCurrentUser] = useState({})
