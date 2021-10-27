@@ -77,4 +77,3 @@ export const NavBar = (props) => {
 
     )
 }
-//iterate through all users and set conditional statement that if user isProvider render this (else) render request tab.

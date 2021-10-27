@@ -57,11 +57,7 @@ export const Providers = () => {
             </>
 )
 }
-// const handleClick = () => {
-//     const copy = { ...user }
-//     copy.isProvider = !copy.isProvider
-//      setUser(copy)
-//  }
+
  <>
     
          
