@@ -1,11 +1,11 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { HomePage } from "./HomePage/Homepage";
-import { About } from "./About/about.js"
-import { TicketForm } from "./Tickets/Ticketform";
-import { Providers } from "./Providers/providers";
-import { Profile } from "./UserProfile/userprofile";
-import { TicketList } from "./Tickets/TicketList";
+import { HomePage } from "./Components/HomePage/Homepage.js";
+import { About } from "./Components/About/about.js"
+import { TicketForm } from "./Components/Tickets/Ticketform";
+import { Providers } from "./Components/Providers/providers.js";
+import { Profile } from "./Components/UserProfile/userprofile.js";
+import { TicketList } from "./Components/Tickets/TicketList";
 
 
 export const ApplicationViews = () => {
